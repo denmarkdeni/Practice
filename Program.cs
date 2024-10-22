@@ -4,6 +4,9 @@ using System.Diagnostics;
 using System.Linq.Expressions;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.IO;
+using static System.Net.Mime.MediaTypeNames;
+using System.Collections;
 
 namespace Deniston
 {
@@ -278,6 +281,7 @@ namespace Deniston
 
         #region Object Initializer / Constructors
 
+        /*
         int Age;
         string? Name;  //Object Initializer
         static int Century;
@@ -320,19 +324,71 @@ namespace Deniston
             Deni Do = new Deni();
         }
 
+
+        */
+
         #endregion
 
+        #region Stream Reader
 
+        //static void Main()
+        //{
+        //    string startupPath = AppDomain.CurrentDomain.BaseDirectory; //prints Current Project Directory
+
+        //    using (StreamReader sr = new StreamReader(Path.Combine(startupPath, "Bio.txt"))) 
+        //    {
+        //        string? Line = sr.ReadLine();
+        //        Console.WriteLine(Path.Combine(startupPath, "Bio.txt"));
+        //        Console.WriteLine(Line);
+        //        ArrayList ArrList = new ArrayList();
+        //        ArrList.Add(Line);
+        //        Console.WriteLine(ArrList[0]);
+        //    }
+        //}
+        #endregion
     }
+
+    #region New Class
 
     class Deni 
     {
-        public Deni()
+        public void Intro()
         {
-            Console.WriteLine("hi");
+            Console.WriteLine("i am deni");
         }
     }
 
-}  
+    class Dinesh : Deni 
+    {
+        public new void Intro()             //New Keyword Used for Data Hiding 
+        {
+            Console.WriteLine("i am dinesh");
+        }
+    }
+
+    class Subbu : Dinesh
+    {
+        public new void Intro()
+        {
+            Console.WriteLine("i am Subbu");
+        }
+    }
+
+    class Jeya 
+    {
+        static void Main(string[] args)
+        {
+            Deni D1 = new Dinesh();
+            D1.Intro();
+            Dinesh D2 = new Subbu();
+            D2.Intro();
+            Subbu D3 = new Subbu();
+            D3.Intro();
+        }
+    }
+
+    #endregion
+
+}
 
 
