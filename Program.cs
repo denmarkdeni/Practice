@@ -352,7 +352,22 @@ namespace Deniston
 
     class Deni 
     {
-        public void Intro()
+        private void Name()
+        {
+            Console.WriteLine("Deniston");
+        }
+
+        public void Age()
+        {
+            Console.WriteLine("23");
+        }
+
+        internal void Blood()
+        {
+            Console.WriteLine("O +ve");
+        }
+
+        protected void Intro()
         {
             Console.WriteLine("i am deni");
         }
@@ -374,20 +389,89 @@ namespace Deniston
         }
     }
 
-    class Jeya 
+    class Jeya
     {
+        //static void Main(string[] args)
+        //{
+        //    Deni D1 = new Deni();
+
+        //}
+    }
+
+    #endregion
+
+    #region Property
+
+    class Gomma
+    {
+        private int ada;
+
+        public int Gommala
+        {
+            set
+            {
+                if (value > 100)
+                {
+                    Console.WriteLine("adangommala");
+                    return;
+                }
+                ada = value;
+            }
+            get { return ada; }
+        }
+
+        Gomma()
+        {
+            this.Gommala = 100;
+        }
+
+        //static void Main(string[] args)
+        //{
+        //    Gomma Go = new Gomma();
+        //    Console.WriteLine(Go.Gommala);
+        //}
+    }
+
+    #endregion
+
+    #region enumeration
+
+    class Practice
+    {
+        enum Week
+        { 
+            Monday,
+            Tuesday, 
+            Wednesday,
+            Thursday, 
+            Friday,
+            Saturday, 
+            Sunday
+        }
+
         static void Main(string[] args)
         {
-            Deni D1 = new Dinesh();
-            D1.Intro();
-            Dinesh D2 = new Subbu();
-            D2.Intro();
-            Subbu D3 = new Subbu();
-            D3.Intro();
+            int week = (int)Week.Wednesday;
+            Console.WriteLine(week);
+
+            Week W1 = Week.Monday;
+            switch (W1) 
+            {
+                case Week.Monday:
+                    Console.WriteLine("First Day of the Work");
+                    break;
+                case Week.Tuesday:
+                    Console.WriteLine("Second Day of the Work");
+                    break;
+                case Week.Sunday:
+                    Console.WriteLine("Last Day of the Work");
+                    break;
+            }
         }
     }
 
     #endregion
+
 
 }
 
