@@ -7,10 +7,12 @@ using System.Text.RegularExpressions;
 using System.IO;
 using static System.Net.Mime.MediaTypeNames;
 using System.Collections;
+using System.Security.Cryptography.X509Certificates;
+using System.Net.NetworkInformation;
 
 namespace Deniston
 {
-    class Program
+    public static class Program
     {
         #region Find Odd \ Even
 
@@ -346,6 +348,29 @@ namespace Deniston
         //    }
         //}
         #endregion
+
+        #region FILE
+
+        static void Main(string[] args)
+        {
+            string Txt = "\t ALL IS WeLL";
+            File.WriteAllText("TxT.txt", Txt);
+
+            String Bio = File.ReadAllText("Bio.txt");
+            Console.WriteLine(Bio);
+
+            bool Find =File.Exists("Bio.txt");
+            Console.WriteLine(Find);
+
+            //File.AppendAllText("Bio.txt",Txt);
+
+            //File.Create("Waste.txt");
+
+            //File.Delete("Waste.txt");
+        }
+
+        #endregion
+
     }
 
     #region New Class
@@ -449,29 +474,90 @@ namespace Deniston
             Sunday
         }
 
-        static void Main(string[] args)
-        {
-            int week = (int)Week.Wednesday;
-            Console.WriteLine(week);
+        //static void Main(string[] args)
+        //{
+        //    int week = (int)Week.Wednesday;
+        //    Console.WriteLine(week);
 
-            Week W1 = Week.Monday;
-            switch (W1) 
-            {
-                case Week.Monday:
-                    Console.WriteLine("First Day of the Work");
-                    break;
-                case Week.Tuesday:
-                    Console.WriteLine("Second Day of the Work");
-                    break;
-                case Week.Sunday:
-                    Console.WriteLine("Last Day of the Work");
-                    break;
-            }
+        //    Week W1 = Week.Monday;
+        //    switch (W1) 
+        //    {
+        //        case Week.Monday:
+        //            Console.WriteLine("First Day of the Work");
+        //            break;
+        //        case Week.Tuesday:
+        //            Console.WriteLine("Second Day of the Work");
+        //            break;
+        //        case Week.Sunday:
+        //            Console.WriteLine("Last Day of the Work");
+        //            break;
+        //    }
+        //}
+    }
+
+    #endregion
+
+    #region Struct
+
+    //class Test
+    //{
+    //    static void Main(string[] args)
+    //    {
+    //        MyStruct MS1 = new MyStruct();
+    //        MS1.Speed = 100;
+
+    //        MyStruct MS2 = MS1;
+
+    //        Console.WriteLine(MS2.Speed);
+
+    //        MS1.Speed = 200;
+
+    //        Console.WriteLine(MS2.Speed);
+    //    }
+    //}
+
+    struct MyStruct
+    {
+        public int Speed { get; set; }
+    }
+
+    #endregion
+
+    #region Delegate
+
+    delegate int MyDelegate(int x, int y);
+
+    class Home
+    {
+        public static int Add(int x, int y)
+        {
+            return x + y;
+        }
+
+        public static int Multiply(int x, int y)
+        {
+            return x * y;
+        }
+
+        static void Maine(string[] args)
+        {
+            //MyDelegate Dell = new MyDelegate(Add);
+            //int Result = Dell(4, 5);
+            //Console.WriteLine(Result);
+            ////Simplfied Code to Understand Delegate
+            //Dell = Multiply;
+            //Result = Dell(4, 5);
+            //Console.WriteLine(Result);
+
+            MyDelegate Deni = Add;
+            Deni += Multiply;
+            Deni(7, 5);
         }
     }
 
     #endregion
 
+    
 
 }
 
